@@ -1,3 +1,5 @@
+const double eps=1e-10;
+
 inline double myabs(LL x)
 {
 	return x>=0?x:-x;
@@ -25,7 +27,7 @@ bool solve()
 	{
 		rr=j;
 		while (rr<=n && myabs(b[rr][j])<eps) rr++;
-		if (rr>n) return false;
+		if (rr>n) return false; //有自由元，说明有多解 
 		if (j!=rr) Swap(j,rr);
 		if (myabs(b[j][j]-1.0)>eps)
 		{
@@ -34,7 +36,7 @@ bool solve()
 		}
 		for (i=rr+1;i<=n;i++) Remove(j,i,j);
 	}
-	if (myabs(b[n][n])<eps) return false;
+	if (myabs(b[n][n])<eps) return false; 
 	sol[n]=b[n][n+1]/b[n][n];
 	//回代 
 	double res;
