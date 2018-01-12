@@ -1,5 +1,5 @@
 //O(n*logn*logn) 
-int rank[1000048],tmp[1000048],sa[1000048];
+int rank[1000048],tmp[1000048],sa[1000048],lcp[1000048];
 char s[1000048];
 int len,k;
 
@@ -30,5 +30,20 @@ void construct_sa()
 		}
 		for (i=1;i<=len;i++) rank[i]=tmp[i];
 		if (cnt>=len-1) break;//若已经完全有序则直接退出，重要优化 
+	}
+}
+
+//rank[i]表示原串中第i个字符开始的后缀在sa数组中的位置 
+//lcp[i]记录sa[i]和sa[i+1]起始的后缀的最长公共前缀 
+void construct_lcp()
+{
+	int i,j,h=0;
+	for (i=1;i<=len;i++) rank[sa[i]]=i;
+	for (i=1;i<=len;i++)
+	{
+		j=sa[rank[i]-1];
+		if (h) h--;
+		while (i+h<=len && j+h<=len && s[i+h]==s[j+h]) h++;
+		lcp[rank[i]-1]=h;
 	}
 }
