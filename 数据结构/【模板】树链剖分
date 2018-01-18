@@ -38,8 +38,8 @@ void dfs2(int cur,int tp)
 	int i;
 	top[cur]=tp;id[cur]=++ind;Pos[ind]=cur;
 	//优先搜索重儿子，使得重边在线段树中能连续存储
-  if (son[cur]) dfs2(son[cur],tp);
-  //搜索轻儿子
+  	if (son[cur]) dfs2(son[cur],tp);
+  	//搜索轻儿子
 	for (i=0;i<v[cur].size();i++)
 		if (v[cur][i]!=fa[cur] && v[cur][i]!=son[cur])
 			dfs2(v[cur][i],v[cur][i]);
