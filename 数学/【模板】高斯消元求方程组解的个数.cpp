@@ -12,8 +12,8 @@ inline double myabs(LL x)
 
 inline void Remove(int r1,int r2,int col)
 {
-	double tmp=b[r2][col];
-	for (int i=1;i<=n+1;i++) b[r2][i]-=b[r1][i]*tmp;
+	double tmp=b[r1][col];
+	for (int i=1;i<=n+1;i++) b[r1][i]-=b[r2][i]*tmp;
 }
 
 void solve()
