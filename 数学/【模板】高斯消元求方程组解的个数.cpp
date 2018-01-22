@@ -1,11 +1,12 @@
-const double eps=1e-10;
+//long double!
+const long double eps=1e-10; //if failed, try 1e-2
 
 bool taken[148];
 //值为true表示这是一个有效方程 
 int t,n;
 //n未知数个数,t方程个数 
 
-inline double myabs(LL x)
+inline long double myabs(LL x)
 {
 	return x>=0?x:-x;
 }
@@ -29,7 +30,7 @@ void solve()
 		taken[rr]=true;
 		if (myabs(b[rr][j]-1.0)>eps)
 		{
-			double tmp=b[rr][j];
+			long double tmp=b[rr][j];
 			for (i=1;i<=n+1;i++) b[rr][i]/=tmp;
 		}
 		for (i=1;i<=t;i++) if (!taken[i] && myabs(b[i][j])>eps) Remove(i,rr,j);
