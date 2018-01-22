@@ -1,38 +1,38 @@
 const double eps=1e-10;
 
 bool taken[148];
-//ÖµÎªtrue±íÊ¾ÕâÊÇÒ»¸öÓÐÐ§·½³Ì 
+//å€¼ä¸ºtrueè¡¨ç¤ºè¿™æ˜¯ä¸€ä¸ªæœ‰æ•ˆæ–¹ç¨‹ 
 int t,n;
-//nÎ´ÖªÊý¸öÊý,t·½³Ì¸öÊý 
+//næœªçŸ¥æ•°ä¸ªæ•°,tæ–¹ç¨‹ä¸ªæ•° 
 
 inline double myabs(LL x)
 {
 	return x>=0?x:-x;
 }
 
-inline void Remove(int r1,int r2)
+inline void Remove(int r1,int r2,int col)
 {
-	double tmp=b[r2][col];
-	for (int i=1;i<=n+1;i++) b[r2][i]-=b[r1][i]*tmp;
+	double tmp=b[r1][col];
+	for (int i=1;i<=n+1;i++) b[r1][i]-=b[r2][i]*tmp;
 }
 
 void solve()
 {
 	int i,j,rr;
-	//ÏûÔª
-	//×¢Òâ²»ÒªÓÃlong longÇólcm¶øÊÇÓÃdouble£¬²»È»»á±¬long long 
+	//æ¶ˆå…ƒ
+	//æ³¨æ„ä¸è¦ç”¨long longæ±‚lcmè€Œæ˜¯ç”¨doubleï¼Œä¸ç„¶ä¼šçˆ†long long 
 	for (j=1;j<=n;j++)
 	{
 		rr=1
 		while (rr<=t && (taken[rr] || myabs(b[rr][j])<eps)) rr++;
-		if (rr>t) continue; //ÓÐ×ÔÓÉÔª£¬ËµÃ÷ÓÐ¶à½â 
+		if (rr>t) continue; //æœ‰è‡ªç”±å…ƒï¼Œè¯´æ˜Žæœ‰å¤šè§£ 
 		taken[rr]=true;
 		if (myabs(b[rr][j]-1.0)>eps)
 		{
 			double tmp=b[rr][j];
 			for (i=1;i<=n+1;i++) b[rr][i]/=tmp;
 		}
-		for (i=1;i<=t;i++) if (!taken[i] && myabs(b[i][j])>eps) Remove(i,rr);
+		for (i=1;i<=t;i++) if (!taken[i] && myabs(b[i][j])>eps) Remove(i,rr,j);
 	}
 }
 
@@ -42,5 +42,5 @@ int main ()
 	solve();
 	int i,j,Free=n;
 	for (i=1;i<=t;i++) if (taken[i]) Free--;
-	//×ÔÓÉÔª¸öÊý=Free 
+	//è‡ªç”±å…ƒä¸ªæ•°=Free 
 }
