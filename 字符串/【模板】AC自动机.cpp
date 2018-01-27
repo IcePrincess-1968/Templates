@@ -16,6 +16,7 @@ void Insert(int ind)
 }
 
 //构建fail指针(Trie图)
+//fail[cur]指的是当前已经匹配到cur这个字符，它的那些儿子们都失配时，该转移到哪里继续匹配
 queue<int> q;
 void construct_fail()
 {
@@ -32,6 +33,7 @@ void construct_fail()
 				q.push(trie[cur].next[i]);
 			}
 			else
+			    //构建Trie图（不是很必要），如果没有i这个儿子，就可以通过fail指针提前帮他找好下一个匹配位置
 				trie[cur].next[i]=cur==1?1:trie[trie[cur].fail].next[i];
 	}
 }
