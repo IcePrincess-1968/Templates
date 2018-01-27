@@ -34,7 +34,7 @@ void NTT(LL c[],int len,int fl)
 	{
 		LL wn=quick_pow(G,fl==1?(MOD-1)/clen:(MOD-1)-(MOD-1)/clen);
 	  	//这里容易写错！注意iDFT的时候所有的原根指数要取负！-(MOD-1)/clen不好算，利用原根的性质g^(MOD-1)=1,把指数转成正数
-    		for (j=0;j<len;j+=clen)
+    	for (j=0;j<len;j+=clen)
 		{
 			LL w=1ll;
 			for (k=j;k<j+(clen>>1);k++)
