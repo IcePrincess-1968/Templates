@@ -39,7 +39,7 @@ void FFT(Complex c[],int len,int fl)
 	for (clen=2;clen<=len;clen<<=1)
 	{
 		Complex wn=Complex(cos(pi*2.0*fl/clen),sin(pi*2.0*fl/clen));
-    //wn是clen次单位复根
+    	//wn是clen次单位复根
 		for (j=0;j<len;j+=clen)
 		{
 			Complex w=Complex(1,0);
