@@ -1,5 +1,5 @@
-//ssԭ����s�ӹ�"#"�Ĵ� 
-//RL[i]��pos=i����뾶 
+//ss原串；s加过"#"的串 
+//RL[i]：pos=i的最长半径 
 cur=1;
 len=strlen(ss+1);
 for (i=1;i<=len;i++)
@@ -14,6 +14,7 @@ int ans=0;
 for (i=1;i<=len;i++)
 {
 	if (i<maxright)
+		//RL[2*pos-i]是i关于pos的对称位置的半径
 		RL[i]=min(RL[2*pos-i],maxright-i);
 	else
 		RL[i]=1;
