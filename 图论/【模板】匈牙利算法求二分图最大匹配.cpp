@@ -5,6 +5,9 @@ bool find(int cur)
 {
 	int i;
 	for (i=0;i<v[cur].size();i++)
+		//state数组指的是如果之前曾试图改变v[cur][i]的归属
+		//因为还在find函数内，所以必然是已经失败了的，所以
+		//不用再浪费时间了
 		if (!state[v[cur][i]])
 		{
 			state[v[cur][i]]=true;
