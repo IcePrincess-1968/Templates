@@ -64,3 +64,12 @@ void calc_FFT()
 	for (i=0;i<l;i++) a[i]=a[i]*b[i];
 	FFT(a,l,-1);
 }
+
+int main ()
+{
+	//a read lena=n;
+	//b read lenb=m;
+	calc_FFT();
+	for (i=0;i<n+m-1;i++) printf("%d ",int(a[i].r+0.5));
+	printf("\n");
+}
