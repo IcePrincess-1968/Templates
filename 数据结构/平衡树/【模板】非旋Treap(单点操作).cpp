@@ -98,3 +98,4 @@ Treap* Delete(Treap *root,int key)
 		return root;
 	}
 }
+
