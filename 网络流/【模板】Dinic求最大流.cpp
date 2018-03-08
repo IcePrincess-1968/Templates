@@ -43,6 +43,8 @@ int dfs(int x,int maxf)
 			ans+=now;
 		}
 	}
+	if (ans==0) depth[x]=0;
+	//当前弧优化:如果已经不能流了就把这个点废了
 	return ans;
 }
 
