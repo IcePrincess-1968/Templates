@@ -29,12 +29,12 @@ void construct_fail()
 			{
 				tmp=trie[cur].fail;
 				while (tmp && !trie[tmp].next[i]) tmp=trie[tmp].fail;
-				trie[trie[cur].next[i]].fail=tmp?trie[tmp].next[i]:1;
+				trie[trie[cur].next[i]].fail=(tmp?trie[tmp].next[i]:1);
 				q.push(trie[cur].next[i]);
 			}
 			else
 			    //构建Trie图（不是很必要），如果没有i这个儿子，就可以通过fail指针提前帮他找好下一个匹配位置
-				trie[cur].next[i]=cur==1?1:trie[trie[cur].fail].next[i];
+				trie[cur].next[i]=(cur==1?1:trie[trie[cur].fail].next[i]);
 	}
 }
 
