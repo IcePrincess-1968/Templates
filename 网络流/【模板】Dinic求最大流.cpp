@@ -1,4 +1,4 @@
-int t,tot,head[1048],to[400048],nxt[400048],f[400048];
+int t,tot,head[1048],cur[1048],to[400048],nxt[400048],f[400048];
 inline void addedge(int s,int t,int cap)
 {
 	to[++tot]=t;nxt[tot]=head[s];head[s]=tot;f[tot]=cap;
@@ -30,8 +30,8 @@ bool bfs()
 int dfs(int x,int maxf)
 {
 	if (x==t) return maxf;
-	int i,y,now,ans=0,minf;
-	for (i=head[x];i;i=nxt[i])
+	int y,now,ans=0,minf;
+	for (int &i=cur[x];i;i=nxt[i])
 	{
 		y=to[i];
 		if (f[i] && depth[y]==depth[x]+1)
@@ -44,12 +44,15 @@ int dfs(int x,int maxf)
 		}
 	}
 	if (ans==0) depth[x]=0;
-	//当前弧优化:如果已经不能流了就把这个点废了
 	return ans;
 }
 
 int main ()
 {
-    int ans=0;
-    while (bfs()) ans+=dfs(0,2e9);
+    int i,ans=0;
+    while (bfs())
+	{
+		for (i=0;i<=t;i++) cur[i]=head[i];
+		ans+=dfs(0,2e9);
+	}
 }
