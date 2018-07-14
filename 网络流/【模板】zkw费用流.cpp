@@ -1,4 +1,4 @@
-int head[200048],to[400048],nxt[400048],f[400048],cost[400048],tot=1;
+int head[200048],cur[200048],to[400048],nxt[400048],f[400048],cost[400048],tot=1;
 inline void addedge(int s,int t,int cap,int c)
 {
 	to[++tot]=t;nxt[tot]=head[s];head[s]=tot;f[tot]=cap;cost[tot]=c;
@@ -13,8 +13,8 @@ inline int aug(int cur,int maxf)
 {
 	visited[cur]=true;
 	if (cur==T) {maxflow+=maxf;mincost+=(-D[S])*maxf;return maxf;}
-	int i,y,now,minf,ans=0;
-	for (i=head[cur];i;i=nxt[i])
+	int y,now,minf,ans=0;
+	for (int &i=head[cur];i;i=nxt[i])
 	{
 		y=to[i];
 		if (f[i] && !visited[y] && D[cur]+cost[i]-D[y]==0)
@@ -54,9 +54,13 @@ int main ()
 	}
 	maxflow=mincost=0;
 	do
+	{
+		for (i=1;i<=n;i++) cur[i]=head[i];
+		//zkw在aug的时候也是可以加当前弧优化的
 		do
 			memset(visited,false,sizeof(visited));
 		while (aug(S,INF));
+	}
 	while (relabel());
 	printf("%d %d\n",maxflow,mincost);
 	return 0;
