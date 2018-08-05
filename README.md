@@ -1,2 +1,1 @@
-# Different kinds of algorithms used for OI studying
-# Mistake Revises are welcomed
+Algorithms and Data structures
