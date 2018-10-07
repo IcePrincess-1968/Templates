@@ -9,7 +9,7 @@ void sieve_mu()
 	for (i=2;i<=n;i++)
 	{
 		if (isprime[i]) prime[++tot]=i,mu[i]=-1;
-		for (j=1;j<=tot && prime[j]*i<=n;j++)
+		for (j=1;j<=tot && 1ll*prime[j]*i<=n;j++)
 		{
 			isprime[i*prime[j]]=false;
 			if (i%prime[j]==0) mu[i*prime[j]]=0; else mu[i*prime[j]]=-mu[i];

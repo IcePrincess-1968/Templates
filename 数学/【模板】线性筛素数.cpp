@@ -6,9 +6,8 @@ void sieve()
 	for (i=2;i<=n;i++)
 	{
 		if (isprime[i]) prime[++tot]=i;
-		for (j=1;j<=tot;j++)
+		for (j=1;j<=tot && 1ll*i*prime[j]<=n;j++)
 		{
-			LL mul=prime[j];mul*=i;if (mul>n) break;
 			isprime[prime[j]*i]=false;
 			if(i%prime[j]==0) break;
 		}
