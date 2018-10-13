@@ -1,4 +1,4 @@
-void sieve()
+void sieve_prime()
 {
 	memset(isprime,true,sizeof(isprime));
 	isprime[1]=false;

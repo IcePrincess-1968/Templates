@@ -41,6 +41,7 @@ int dfs(int x,int maxf)
 			f[i]-=now;
 			f[i^1]+=now;
 			ans+=now;
+			if (ans>=maxf) return ans;
 		}
 	}
 	if (ans==0) depth[x]=0;
