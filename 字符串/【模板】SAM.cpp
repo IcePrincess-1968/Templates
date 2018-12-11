@@ -11,7 +11,7 @@ namespace SAM
 	inline void init() {tot=1;root=last=1;}
 	inline void insert(char ch)
 	{
-		int p=last,np=++tot;;maxn[np]=maxn[p]+1;sz[np]=1;int w=ch-'a'+1;
+		int p=last,np=++tot;maxn[np]=maxn[p]+1;sz[np]=1;int w=ch-'a'+1;
 		while (p && !nxt[p][w]) nxt[p][w]=np,p=par[p];
 		if (!p) {par[np]=root;last=np;return;}
 		int q=nxt[p][w];
